@@ -27,7 +27,7 @@ export default ({location}) => {
           controls
             width="100%"
             height="100%"
-            url="https://s3.amazonaws.com/deephire-video-dump/46307922/e9521b8b-4e32-4f31-8777-cf37b75bfb0f/archive.mp4"
+            url="https://s3.amazonaws.com/jurbly-video-dump/46307922/e9521b8b-4e32-4f31-8777-cf37b75bfb0f/archive.mp4"
             
           />
         </div>
