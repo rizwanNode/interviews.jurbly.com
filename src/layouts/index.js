@@ -3,12 +3,10 @@ import styles from './index.less';
 import { Layout, Row, Col, Alert } from 'antd';
 import React, { useEffect } from 'react';
 import { router } from 'umi';
-import * as Sentry from '@sentry/browser';
 import { useCompany, useInterview } from '../services/apiHooks';
 const { Footer, Content, Header } = Layout;
 const DetectRTC = require('detectrtc');
 
-Sentry.init({ dsn: 'https://ba050977b865461497954ae331877145@sentry.io/5187820' });
 
 const defaultInterviewValue = {
   interview: null,
