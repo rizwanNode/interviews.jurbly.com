@@ -2,7 +2,7 @@
 import fetch from 'isomorphic-fetch';
 const DetectRTC = require('detectrtc');
 
-const apiUrl = 'https://a.deephire.com/v1';
+const apiUrl = 'https://a.jurbly.com/v1';
 // const apiUrl = 'https://dev-a.deephire.com/v1/';
 
 // const apiUrl = 'http://localhost:3000/v1';
@@ -125,10 +125,10 @@ export const notifyRecruiter = (
     template: 'completed-interview-recruiter-notification',
     id,
     candidateName,
-    recipients: [createdBy || 'noemail@deephire.com'],
+    recipients: [createdBy || 'noemail@jurbly.com'],
     candidateEmail,
     interviewName,
-    candidateUrl: `https://recruiter.deephire.com/one-way/candidates/candidate/?id=${videosId}`,
+    candidateUrl: `https://recruiter.jurbly.com/one-way/candidates/candidate/?id=${videosId}`,
     candidateThumbnail: thumbnail640x480,
   };
 
@@ -146,7 +146,7 @@ export const notifyCandidate = (candidateName, candidateEmail) => {
   var data = {
     template: 'job-seeker-completed-interview',
     candidateName,
-    recipients: [candidateEmail || 'noCandidateEmail@deephire.com'],
+    recipients: [candidateEmail || 'noCandidateEmail@jurbly.com'],
     candidateEmail,
   };
 
@@ -218,7 +218,7 @@ export const victoryEvent = (
     interviewId,
     companyId,
     interviewName,
-    candidateUrl: `https://recruiter.deephire.com/one-way/candidates/candidate/?id=${videosId}`,
+    candidateUrl: `https://recruiter.jurbly.com/one-way/candidates/candidate/?id=${videosId}`,
     completeInterviewData
   };
 
