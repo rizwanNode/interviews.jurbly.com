@@ -14,7 +14,7 @@ import {
 import { Button, Progress, Row, Col } from 'antd';
 import Timer from '@/components/Timer';
 
-const cameraId = 'DeepHire';
+const cameraId = 'Jurbly';
 
 export const StartScreen = () => (
   <div className={styles.tester} id={`${cameraId}-start-screen`}>
@@ -118,7 +118,7 @@ const knownError = error => (
       type="primary"
       onClick={() =>
         window.open(
-          'https://help.deephire.com/videoInterviewErrors',
+          'https://help.jurbly.com/videoInterviewErrors',
           '_blank'
         )
       }
