@@ -23,7 +23,7 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               CI=false yarn && yarn build
-              aws s3 sync dist/ s3://interviews.deephire.com
+              aws s3 sync dist/ s3://interviews.jurbly.com
               aws cloudfront create-invalidation --distribution-id E1D1M7ZNE38WT7  --paths "/*"
 
             fi
@@ -32,6 +32,6 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "develop" ]; then
               CI=false yarn && yarn build
-              aws s3 sync dist/ s3://dev-interviews.deephire.com
+              aws s3 sync dist/ s3://dev-interviews.jurbly.com
               aws cloudfront create-invalidation --distribution-id ELZOVK7TPOMZP  --paths "/*"
             fi
