@@ -53,7 +53,7 @@ async function candidateSendMessage(msg) {
     'message:show',
     [
       'text',
-      'Supported Browser List — https://help.deephire.com',
+      'Supported Browser List — https://help.jurbly.com',
     ],
   ]);
   $crisp.push(['do', 'helpdesk:query', ['Supported Browsers']]);
