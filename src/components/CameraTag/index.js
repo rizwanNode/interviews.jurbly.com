@@ -22,7 +22,7 @@ import {
 const DetectRTC = require('detectrtc');
 
 // const simple = qs.parse(window.location.search)['simple'];
-const cameraId = 'DeepHire';
+const cameraId = 'Jurbly';
 
 const logEvent = (event) => {
   $crisp.push(["set", "session:event", [[["video_error", { event: event }, "red"]]]])
