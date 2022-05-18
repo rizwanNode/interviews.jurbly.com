@@ -75,13 +75,13 @@ const BasicLayout = ({ children }) => {
         {(
           <Header className={styles.header}>
             <Row type="flex" justify="space-between">
-              <Col>{pageBranding?.name || companyData?.companyName || 'DeepHire'}</Col>
+              <Col>{pageBranding?.name || companyData?.companyName || 'Jurbly'}</Col>
               <Col>
                 <img
                   src={
                     pageBranding?.logo ||
                     companyData?.logo ||
-                    'https://s3.amazonaws.com/deephire/dh_vertical.png'
+                    'https://s3.amazonaws.com/jurbly/dh_vertical.png'
                   }
                   alt={pageBranding?.name || companyData?.companyName}
                   className={styles.logo}
@@ -94,7 +94,7 @@ const BasicLayout = ({ children }) => {
         <Content className={styles.content}>
           {children}
         </Content>
-        {<Footer className={styles.footer}>Powered by DeepHire | Find your fit.</Footer>}
+        {<Footer className={styles.footer}>Powered by Jurbly | Find your fit.</Footer>}
       </CompleteInterviewDataContext.Provider>
     </Layout>
   );
