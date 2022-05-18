@@ -66,7 +66,7 @@ const Success = () => (
         <img
           style={{ margin: '0 -100%', verticalAlign: 'middle' }}
           height="100%"
-          src="https://deephire.s3.amazonaws.com/logos/trophy.gif"
+          src="https://jurbly.s3.amazonaws.com/logos/trophy.gif"
           alt="Prepare to Record!"
         />
       </div>
