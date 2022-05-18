@@ -11,7 +11,7 @@ import styles from './index.less';
 
 const FormItem = Form.Item;
 
-const appleoneProtection = 'https://deephire.s3.amazonaws.com/Agreement.pdf';
+const appleoneProtection = 'https://jurbly.s3.amazonaws.com/Agreement.pdf';
 const appleOneCompayId = '5e95d7d3aed1120001480d69';
 const SignIn = Form.create()(props => {
   const { form, location, skip, executeStartedEvent, companyId } = props;
@@ -37,7 +37,7 @@ const SignIn = Form.create()(props => {
         AppleOne's Agreement
       </a>{' '}
       & the{' '}
-      <a rel="noopener noreferrer" target="_blank" href="https://blog.deephire.com/privacy">
+      <a rel="noopener noreferrer" target="_blank" href="https://blog.jurbly.com/privacy">
         Terms & Conditions
       </a>
     </Checkbox>
