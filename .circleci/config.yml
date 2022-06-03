@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12.14.1
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run:
+          name: Install aws cli
+          command: |
+            sudo apt-get install python-dev python-pip
+            sudo pip install awscli
+
+      - run:
+          name: AWS cloudfront
+          command: aws configure set preview.cloudfront true
+
+      - deploy:
+          name: Push to s3 PROD
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              CI=false yarn && yarn build
+              aws s3 sync dist/ s3://interviews.jurbly.com
+              aws cloudfront create-invalidation --distribution-id E1D1M7ZNE38WT7  --paths "/*"
+
+            fi
+      - deploy:
+          name: Push to s3 DEVELOP
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              CI=false yarn && yarn build
+              aws s3 sync dist/ s3://dev-interviews.jurbly.com
+              aws cloudfront create-invalidation --distribution-id ELZOVK7TPOMZP  --paths "/*"
+            fi

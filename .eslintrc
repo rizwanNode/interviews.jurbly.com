@@ -1,0 +1,10 @@
+{
+  "extends": "eslint-config-umi",
+  "plugins": [
+    "react-hooks"
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react/prop-types": "enabled"
+  }
+}

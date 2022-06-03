@@ -1,0 +1,31 @@
+@import '~antd/lib/style/themes/default.less';
+
+.content {
+  min-height: calc(~'100vh - 130px');
+  // min-height: calc(~'500px + 25vh');
+  padding: @padding-lg;
+}
+.simpleContent {
+  background-color: @white;
+}
+.footer {
+  padding: @layout-footer-padding;
+  text-align: center;
+}
+.header {
+  height: @layout-header-height;
+  padding: @layout-header-padding;
+  background-color: @white;
+}
+.logo {
+  max-height: 50px;
+  max-width: 30vw;
+}
+
+
+@media screen and (max-width: @screen-sm) {
+  .content {
+    padding: @padding-sm;
+  }
+
+}
