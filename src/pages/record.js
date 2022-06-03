@@ -8,9 +8,9 @@ import ReactPlayer from 'react-player';
 import { storeInterviewQuestionRework } from '@/services/api';
 import { InfoOutlined } from '@ant-design/icons';
 import { Typography, Row, Col, List, Button, Drawer } from 'antd';
-
+import auth_main_img from '../assets/img/video_left.png';
 import styles from './index.less';
-
+import arrow from '../assets/img/arrow.svg';
 import { router } from 'umi';
 
 import { lowerCaseQueryParams } from '@/services/helpers';
@@ -140,58 +140,100 @@ const Record = ({ location }) => {
   const currentQuestion = interviewQuestions[index];
   const { question, hint, questionInfo, tips, exampleVideos, answerTime } = currentQuestion;
   return (
-    <HandleBrowsers>
-      <div className={styles.wrapper}>
-        <TipDrawer
-          questionInfo={questionInfo}
-          tips={tips}
-          exampleVideos={exampleVideos}
-          setDrawerVisible={setDrawerVisible}
-          drawerVisible={drawerVisible}
-        />
-        {/* <h3 key={index} style={{ textAlign: 'center' }}>{`Question ${index + 1}/${
+    <div className={styles.Login}>
+      <div className={styles.Login_left_area}>
+        <img src={auth_main_img} alt="" className={styles.main_login_img} />
+      </div>
+      {/* className="right_area form_area_canditate form_area_video" */}
+      <div className={`${styles.Login_right_area} ${styles.form_area_canditate}`}>
+        <div className={styles.form_area_canditate_form_area}>
+          {/* <p>Questions 2 / 5</p>
+         
+          <p>This question is timed ! You have 15 seconds & unlimited Retakes.</p> */}
+
+          <HandleBrowsers>
+            <div className={styles.wrapper}>
+              <TipDrawer
+                questionInfo={questionInfo}
+                tips={tips}
+                exampleVideos={exampleVideos}
+                setDrawerVisible={setDrawerVisible}
+                drawerVisible={drawerVisible}
+              />
+              {/* <h3 key={index} style={{ textAlign: 'center' }}>{`Question ${index + 1}/${
         interviewQuestions.length
       }`}</h3> */}
-        <Row type="flex" justify="center">
-          <Col style={{ textAlign: 'center' }} lg={12} sm={20} xs={24}>
-            <Paragraph style={{ marginBottom: 0 }} type="secondary">{`Question ${index + 1}/${
-              interviewQuestions.length
-            }`}</Paragraph>
-            <Title level={mobile ? 4 : 2} style={{ marginBottom: 8, marginTop: 0 }}>
-              {question}
-              <Button
-                onClick={() => setDrawerVisible(true)}
-                shape="circle"
-                icon={<InfoOutlined />}
-                style={{ marginLeft: 8 }}
-              />
-            </Title>
+              <Row type="flex" justify="center">
+                <Col lg={12} sm={20} xs={24}>
+                  <p
+                    className={`${styles.Login_right_area_form_main_p} ${styles.Login_right_area_form_main_p_no_margin} ${styles._center_recording}`}
+                  >{`Question ${index + 1}/${interviewQuestions.length}`}</p>
+                  <h1
+                    className={`${styles.Login_right_area_form_main_heading} ${styles._center_recording}`}
+                  >
+                    {question}
+                  </h1>
 
-            {hint && (
-              <Title level={4} type="secondary" style={{ marginTop: 0 }}>
-                {hint}
-              </Title>
-            )}
-          </Col>
-        </Row>
-        <CameraTag
-          mobile={mobile}
-          name={`${createdBy} ${fullName} ${data.interviewName}`}
-          description={`${JSON.stringify(currentQuestion)} ${email} ${id} ${index} ${
-            data.createdBy
-          }`}
-          onUpload={completedQ}
-          maxLength={answerTime || interviewConfig.answerTime}
-        />
-        <Row type="flex" justify="center" style={{ textAlign: 'center' }}>
-          <Paragraph style={{ fontSize: mobile ? '1.25em' : '1.75em', marginBottom: 0 }}>
-            {' '}
-            This question is timed! You have {answerTime || interviewConfig.answerTime} seconds{' '}
-            {interviewData?.disableRetakes ? '' : 'and unlimited retakes'}.
-          </Paragraph>
-        </Row>
+                  {/* <Button
+                      onClick={() => setDrawerVisible(true)}
+                      shape="circle"
+                      icon={<InfoOutlined />}
+                      style={{ marginLeft: 8 }}
+                    /> */}
+
+                  {hint && (
+                    <Title level={4} type="secondary" style={{ marginTop: 0 }}>
+                      {hint}
+                    </Title>
+                  )}
+                </Col>
+              </Row>
+              <CameraTag
+                mobile={mobile}
+                name={`${createdBy} ${fullName} ${data.interviewName}`}
+                description={`${JSON.stringify(currentQuestion)} ${email} ${id} ${index} ${
+                  data.createdBy
+                }`}
+                onUpload={completedQ}
+                maxLength={answerTime || interviewConfig.answerTime}
+              />
+              <div
+                className={`${styles.Login_right_area_button_wrapper} ${styles.Login_right_area_button_wrapper_mbl}`}
+              >
+                <button
+                  className={`${styles.Login_right_area_buttom_wrapper_button} ${styles.Login_right_area_buttom_wrapper_button_job_details}`}
+                  onClick={() => setDrawerVisible(true)}
+                >
+                  Get Help
+                  <img src={arrow} alt="" />
+                </button>
+                <button className={`${styles.Login_right_area_buttom_wrapper_button}`}>
+                  Notes
+                  <img src={arrow} alt="" />
+                </button>
+              </div>
+              {/* <Row type="flex" justify="center" style={{ textAlign: 'center' }}>
+                <Paragraph style={{ fontSize: mobile ? '1.25em' : '1.75em', marginBottom: 0 }}>
+                  {' '}
+                  This question is timed! You have {answerTime || interviewConfig.answerTime}{' '}
+                  seconds {interviewData?.disableRetakes ? '' : 'and unlimited retakes'}.
+                </Paragraph>
+              </Row> */}
+            </div>
+          </HandleBrowsers>
+        </div>
+
+        <div
+          className={`${styles.form_area_canditate_notes} ${styles.form_area_canditate_notes_width}`}
+        >
+          <p
+            className={`${styles.form_area_canditate_notes_p} ${styles.form_area_canditate_notes_p_center}`}
+          >
+            www.jurbly.com
+          </p>
+        </div>
       </div>
-    </HandleBrowsers>
+    </div>
   );
 };
 export default Record;

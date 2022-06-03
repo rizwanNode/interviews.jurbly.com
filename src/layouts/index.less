@@ -4,28 +4,33 @@
   min-height: calc(~'100vh - 130px');
   // min-height: calc(~'500px + 25vh');
   padding: @padding-lg;
+  padding: 0px;
 }
 .simpleContent {
   background-color: @white;
+  padding: 0px;
 }
 .footer {
   padding: @layout-footer-padding;
+  display: none;
   text-align: center;
 }
 .header {
   height: @layout-header-height;
   padding: @layout-header-padding;
   background-color: @white;
+  display: none;
 }
 .logo {
   max-height: 50px;
   max-width: 30vw;
 }
-
+input {
+  height: 50px !important;
+}
 
 @media screen and (max-width: @screen-sm) {
   .content {
-    padding: @padding-sm;
+    // padding: @padding-sm;
   }
-
 }

@@ -6,7 +6,7 @@ import { Input, Button, Checkbox } from 'antd';
 import { router } from 'umi';
 import PropTypes from 'prop-types';
 import { lowerCaseQueryParams } from '@/services/helpers';
-
+import arrow from '../../assets/img/arrow.svg';
 import styles from './index.less';
 
 const FormItem = Form.Item;
@@ -67,10 +67,9 @@ const SignIn = Form.create()(props => {
 
   const nameEmailForm = () => (
     <>
-      <h1 style={{ fontSize: 20 }}>Fill out the below info to get started!</h1>
       <div className={styles.container}>
         <Form hideRequiredMark onSubmit={okHandle}>
-          <FormItem labelCol={{ span: 10 }} wrapperCol={{ span: 5 }} label="Name">
+          <FormItem>
             {form.getFieldDecorator('fullName', {
               rules: [
                 {
@@ -78,9 +77,9 @@ const SignIn = Form.create()(props => {
                   message: 'Please input your full name!',
                 },
               ],
-            })(<Input placeholder="full name" />)}
+            })(<Input placeholder="Name" />)}
           </FormItem>
-          <FormItem labelCol={{ span: 10 }} wrapperCol={{ span: 5 }} label="Email">
+          <FormItem>
             {form.getFieldDecorator('email', {
               rules: [
                 {
@@ -92,13 +91,16 @@ const SignIn = Form.create()(props => {
                   message: 'Please input your E-mail!',
                 },
               ],
-            })(<Input placeholder="email" />)}
+            })(<Input placeholder="E-mail" />)}
           </FormItem>
           <Form.Item>
             {checkboxField(companyId)}
-            <Button type="primary" htmlType="submit">
-              Next
-            </Button>
+            <div className={styles.Login_right_area_buttom_wrapper}>
+              <Button type="primary" htmlType="submit" className={styles.button_start}>
+                Start now
+                <img src={arrow} />
+              </Button>
+            </div>
           </Form.Item>
         </Form>
       </div>
@@ -114,12 +116,6 @@ const SignIn = Form.create()(props => {
       </Button>
     </Form>
   );
-
-  // if (fullNameParam && emailParam) {
-  //   return (
-
-  //   );
-  // }
 
   const okHandle = e => {
     e.preventDefault();
