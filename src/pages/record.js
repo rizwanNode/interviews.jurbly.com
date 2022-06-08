@@ -172,7 +172,7 @@ const Record = ({ location }) => {
         <div className={styles.left_area_camera}>
           <div>
             <h1 className={styles.left_area_camera_main_heading} onClick={customdata}>
-              BUILDING MANAGER BY{CompanyName}
+              BUILDING MANAGER BY {CompanyName}
             </h1>
             <p className={styles.left_area_camera_main_Para}>
               You have to answer 5 video recorded questions and 0 quiz to complete this interview
