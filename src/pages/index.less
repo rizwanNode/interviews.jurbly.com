@@ -1,6 +1,109 @@
 @import '~antd/lib/style/themes/default.less';
 
 // @import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';
+
+.left_area_camera {
+  background-color: #f0f2f5;
+  height: 100vh;
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+  // display: ;
+}
+.left_area_camera::after {
+  background-color: #88929e;
+  width: 1px;
+  position: absolute;
+  left: 2.7rem;
+  top: 200px;
+  height: 100vh;
+  content: '';
+}
+.no_padding_button {
+  padding: 0px !important;
+}
+.left_area_camera_main_heading {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #2f3367;
+  margin-bottom: 0px !important;
+}
+.StepWrapper {
+  margin-top: 2rem;
+}
+.stepspan {
+  font-family: Poppins;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #c4cfde;
+}
+.Step {
+  margin-bottom: 2rem;
+
+  padding-left: 2rem;
+}
+
+.ball {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+  left: 2rem;
+  z-index: 9;
+  background: #c4cfde;
+}
+.activeBall {
+  background: #88929e;
+}
+.activeSpan {
+  color: #303468;
+}
+
+.left_area_camera_main_Para {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #303468;
+}
+.StepHeading {
+  font-family: Poppins;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #c4cfde;
+  margin-bottom: 0px !important;
+}
+.StepPara {
+  color: #c4cfde;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.activeHeading {
+  color: #303468;
+}
+.activePara {
+  color: #303468;
+}
 .wrapper {
   text-align: left;
 }
@@ -119,7 +222,7 @@
   margin-top: 2rem;
 }
 .Login_right_area_buttom_wrapper_button {
-  height: 70px;
+  height: 60px;
   width: 176px;
   cursor: pointer;
   border: none;
@@ -130,7 +233,7 @@
   border-radius: 8px;
   padding: 19px;
 
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   line-height: 33px;
   letter-spacing: 0em;
@@ -139,8 +242,11 @@
 }
 .Login_right_area_buttom_wrapper_button_job_details {
   background-color: #002140;
-  width: 200px;
+  width: 190px;
   margin-right: 10px;
+}
+.Login_right_area_buttom_wrapper_button_job_details:hover {
+  color: #fff !important;
 }
 .view_Jurbly_form {
   display: flex;
@@ -167,6 +273,9 @@
 .form_area_canditate_a {
   color: #007dfa;
   font-weight: 600;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .form_area_canditate_notes {
   margin-top: 6rem;

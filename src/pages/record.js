@@ -1,5 +1,5 @@
 /* global mixpanel */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CameraTag from '@/components/CameraTag';
 import { useInterview } from '../services/apiHooks';
 
@@ -139,10 +139,54 @@ const Record = ({ location }) => {
   //  {tips, hint, questionInfo, exampleVideos} = interviewQuestions
   const currentQuestion = interviewQuestions[index];
   const { question, hint, questionInfo, tips, exampleVideos, answerTime } = currentQuestion;
+  const customdata = e => {
+    console.log(currentQuestion);
+  };
+
   return (
     <div className={styles.Login}>
       <div className={styles.Login_left_area}>
-        <img src={auth_main_img} alt="" className={styles.main_login_img} />
+        <div className={styles.left_area_camera}>
+          <div>
+            <h1 className={styles.left_area_camera_main_heading} onClick={customdata}>
+              BUILDING MANAGER BY RPH GLOBAL SDN BHD
+            </h1>
+            <p className={styles.left_area_camera_main_Para}>
+              You have to answer 5 video recorded questions and 0 quiz to complete this interview
+            </p>
+          </div>
+
+          <div className={styles.StepWrapper}>
+            {interviewQuestions.map((EachQuestion, key) => (
+              <div className={`${styles.Step} `}>
+                <div
+                  className={`${styles.ball} ${EachQuestion.question ==
+                    currentQuestion['question'] && styles.activeBall}`}
+                >
+                  <p>{key + 1}</p>
+                </div>
+                <span
+                  className={`${styles.stepspan} ${EachQuestion.question ==
+                    currentQuestion['question'] && styles.activeSpan}`}
+                >
+                  Type : Video Answer{' '}
+                </span>
+                <h1
+                  className={`${styles.StepHeading} ${EachQuestion.question ==
+                    currentQuestion['question'] && styles.activeHeading}`}
+                >
+                  {EachQuestion.question}
+                </h1>
+                <p
+                  className={`${styles.StepPara}${EachQuestion.question ==
+                    currentQuestion['question'] && styles.activePara}`}
+                >
+                  15 minutes to think , 15 seconds to record
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
       {/* className="right_area form_area_canditate form_area_video" */}
       <div className={`${styles.Login_right_area} ${styles.form_area_canditate}`}>
@@ -201,13 +245,21 @@ const Record = ({ location }) => {
                 className={`${styles.Login_right_area_button_wrapper} ${styles.Login_right_area_button_wrapper_mbl}`}
               >
                 <button
-                  className={`${styles.Login_right_area_buttom_wrapper_button} ${styles.Login_right_area_buttom_wrapper_button_job_details}`}
-                  onClick={() => setDrawerVisible(true)}
+                  className={`${styles.Login_right_area_buttom_wrapper_button} ${styles.Login_right_area_buttom_wrapper_button_job_details}   ${styles.no_padding_button}`}
                 >
-                  Get Help
-                  <img src={arrow} alt="" />
+                  <a
+                    href="https://jurbly.com/get-help"
+                    target="_blank"
+                    className={`${styles.Login_right_area_buttom_wrapper_button} ${styles.Login_right_area_buttom_wrapper_button_job_details}`}
+                  >
+                    Get Help
+                    <img src={arrow} alt="" />
+                  </a>
                 </button>
-                <button className={`${styles.Login_right_area_buttom_wrapper_button}`}>
+                <button
+                  onClick={() => setDrawerVisible(true)}
+                  className={`${styles.Login_right_area_buttom_wrapper_button}`}
+                >
                   Notes
                   <img src={arrow} alt="" />
                 </button>

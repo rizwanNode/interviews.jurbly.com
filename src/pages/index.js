@@ -1,7 +1,7 @@
 /* global mixpanel FS $crisp*/
 import SignIn from '@/components/SignIn';
 import { Col, Row, Divider } from 'antd';
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { lowerCaseQueryParams } from '@/services/helpers';
 import { startedEvent, clickedEvent } from '@/services/api';
 import { CompleteInterviewDataContext } from '@/layouts';
@@ -16,7 +16,7 @@ import facebook from '../assets/img/faecbook.svg';
 import instagram from '../assets/img/instagram.svg';
 import twitter from '../assets/img/twitter.svg';
 import arrow from '../assets/img/arrow.svg';
-
+import axios from 'axios';
 import phone from '../assets/img/phone.svg';
 import email from '../assets/img/email.svg';
 
@@ -24,7 +24,6 @@ const dotJobsCompanyId = '5d35e2acfc5e3205581b573d';
 
 const thingsToKnow = (
   <>
-    {' '}
     <br />
     <div style={{ fontWeight: 'bold' }}>Things to know:</div>
     <div>- Your initial video interview will consist of 5 questions</div>
@@ -77,6 +76,8 @@ const Index = ({ location }) => {
     location.search
   );
 
+  const [InterviewName, setInterviewName] = useState('');
+  const [CompanyName, setCompanyName] = useState('');
   const executeStartedEvent = async (candidateEmail = emailParam, userName = fullNameParam) => {
     return await startedEvent(
       candidateEmail,
@@ -99,6 +100,24 @@ const Index = ({ location }) => {
     }, []);
 
   useOnMount();
+
+  useEffect(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const { id } = Object.fromEntries(urlSearchParams.entries());
+
+    axios.get(`https://a.jurbly.com/v1/interviews/${id}`).then(res => {
+      setInterviewName(res.data[0]['interviewName']);
+    });
+  }, []);
+
+  useEffect(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const { id } = Object.fromEntries(urlSearchParams.entries());
+
+    axios.get(`https://a.jurbly.com/v1/companies/${companyId}`).then(res => {
+      setCompanyName(res['data']['companyName']);
+    });
+  }, [companyId]);
 
   return (
     <div className={styles.Login}>
@@ -131,11 +150,11 @@ const Index = ({ location }) => {
           <p className={styles.Login_right_area_form_main_p}>
             You have been invited to attend a virtual interview for
             <Link to="/" className={styles.form_area_canditate_a}>
-              Building Manager Position
+              {InterviewName}
             </Link>
             By
             <Link to="/" className={styles.form_area_canditate_a}>
-              RPH GLOBAL SDN BHD
+              {CompanyName}
             </Link>
           </p>
 
