@@ -12,7 +12,7 @@ import auth_main_img from '../assets/img/video_left.png';
 import styles from './index.less';
 import arrow from '../assets/img/arrow.svg';
 import { router } from 'umi';
-
+import axios from 'axios';
 import { lowerCaseQueryParams } from '@/services/helpers';
 
 import HandleBrowsers from '@/components/HandleBrowsers';
@@ -79,6 +79,18 @@ const Record = ({ location }) => {
   const { id, fullname: fullName, email, question: questionIndex } = lowerCaseQueryParams(
     location.search
   );
+
+  const [InterviewName, setInterviewName] = useState('');
+  const [CompanyName, setCompanyName] = useState('');
+  useEffect(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const { id } = Object.fromEntries(urlSearchParams.entries());
+
+    axios.get(`https://a.jurbly.com/v1/interviews/${id}`).then(res => {
+      setInterviewName(res.data[0]['interviewName']);
+    });
+  }, []);
+
   const startingQuestionIndex = parseInt(questionIndex) - 1;
 
   const [index, setIndex] = useState(startingQuestionIndex ? startingQuestionIndex : 0);
@@ -87,6 +99,17 @@ const Record = ({ location }) => {
   const completeInterviewData = useContext(CompleteInterviewDataContext);
   const data = completeInterviewData?.interviewData;
   const companyId = completeInterviewData?.companyData?._id;
+
+  useEffect(() => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const { id } = Object.fromEntries(urlSearchParams.entries());
+
+    axios.get(`https://a.jurbly.com/v1/companies/${companyId}`).then(res => {
+      setCompanyName(res['data']['companyName']);
+
+      console.log(res);
+    });
+  }, [companyId]);
 
   let mobile = false;
   const width = () =>
@@ -149,7 +172,7 @@ const Record = ({ location }) => {
         <div className={styles.left_area_camera}>
           <div>
             <h1 className={styles.left_area_camera_main_heading} onClick={customdata}>
-              BUILDING MANAGER BY RPH GLOBAL SDN BHD
+              BUILDING MANAGER BY {CompanyName}
             </h1>
             <p className={styles.left_area_camera_main_Para}>
               You have to answer 5 video recorded questions and 0 quiz to complete this interview
