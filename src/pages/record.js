@@ -88,6 +88,8 @@ const Record = ({ location }) => {
 
     axios.get(`https://a.jurbly.com/v1/interviews/${id}`).then(res => {
       setInterviewName(res.data[0]['interviewName']);
+
+      console.log(res);
     });
   }, []);
 
@@ -156,6 +158,11 @@ const Record = ({ location }) => {
       }
     });
   };
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   if (!data) return null;
 
   const { interviewQuestions, interviewConfig, createdBy } = data;
@@ -192,7 +199,7 @@ const Record = ({ location }) => {
                   className={`${styles.stepspan} ${EachQuestion.question ==
                     currentQuestion['question'] && styles.activeSpan}`}
                 >
-                  Type : Video Answer{' '}
+                  Type : Video Answer
                 </span>
                 <h1
                   className={`${styles.StepHeading} ${EachQuestion.question ==
@@ -204,7 +211,10 @@ const Record = ({ location }) => {
                   className={`${styles.StepPara}${EachQuestion.question ==
                     currentQuestion['question'] && styles.activePara}`}
                 >
-                  15 minutes to think , 15 seconds to record
+                  {interviewConfig['prepTime']} seconds to think
+                  <span style={{ marginLeft: 5 }}>
+                    {interviewConfig['answerTime']} minutes to think
+                  </span>
                 </p>
               </div>
             ))}
